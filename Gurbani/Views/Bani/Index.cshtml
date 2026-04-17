@@ -1,0 +1,37 @@
+@model Dictionary<int, string>
+@{
+    ViewData["Title"] = "Panj Baani";
+}
+
+@* Gurmukhi names for display alongside English names *@
+@{
+    var gurmukhiNames = new Dictionary<int, string>
+    {
+        { 1, "ਜਪੁ ਜੀ ਸਾਹਿਬ" },
+        { 2, "ਜਾਪੁ ਸਾਹਿਬ" },
+        { 3, "ਤ੍ਵ ਪ੍ਰਸਾਦਿ ਸਵਯੇ" },
+        { 4, "ਬੇਨਤੀ ਚੌਪਈ ਸਾਹਿਬ" },
+        { 5, "ਅਨੰਦੁ ਸਾਹਿਬ" }
+    };
+}
+
+<div class="hero-banner text-center py-4 px-3">
+    <h2 class="text-gold fw-bold">ਪੰਜ ਬਾਣੀਆਂ</h2>
+    <p class="mb-0">The five daily prayers of the Sikh Nitnem</p>
+</div>
+
+<div class="container mt-4 px-3">
+    <div class="row g-4 justify-content-center">
+        @foreach (var bani in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <a asp-controller="Bani" asp-action="Read" asp-route-id="@bani.Key" class="card-link">
+                    <div class="card app-card p-4 text-center">
+                        <p class="gurmukhi-text mb-1">@gurmukhiNames[bani.Key]</p>
+                        <p class="text-gold fw-semibold mb-0">@bani.Value</p>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>

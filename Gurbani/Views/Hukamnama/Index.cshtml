@@ -1,0 +1,45 @@
+@model Gurbani.Models.HukamnamaViewModel
+@{
+    ViewData["Title"] = "Daily Hukamnama";
+}
+
+<div class="container mt-3 px-3">
+    <div class="text-center mb-4">
+        <h2 class="text-gold">Daily Hukamnama</h2>
+        @if (Model != null)
+        {
+            <p class="text-muted">@Model.Date</p>
+        }
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    @if (Model != null)
+    {
+        @foreach (var verse in Model.Verses)
+        {
+            <div class="verse-card mb-4">
+                <p class="gurmukhi-text">@verse.Gurmukhi</p>
+                @if (!string.IsNullOrEmpty(verse.Transliteration))
+                {
+                    <p class="transliteration">@verse.Transliteration</p>
+                }
+                @if (!string.IsNullOrEmpty(verse.Translation))
+                {
+                    <p class="translation">@verse.Translation</p>
+                }
+            </div>
+        }
+
+        @if (Model.PageNo > 0)
+        {
+            <div class="text-center mt-3">
+                <a asp-controller="Gurbani" asp-action="Read" asp-route-ang="@Model.PageNo"
+                   class="btn btn-outline-gold">Read full Ang @Model.PageNo</a>
+            </div>
+        }
+    }
+</div>

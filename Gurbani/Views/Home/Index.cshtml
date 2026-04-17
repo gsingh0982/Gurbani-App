@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Gurbani";
+}
+
+<div class="hero-banner text-center py-5 px-3">
+    <h1 class="gurmukhi-text display-3 text-gold">ੴ ਸਤਿ ਨਾਮੁ</h1>
+    <p class="text-muted mt-2">Read the sacred scripture of the Sikh Guru</p>
+</div>
+
+<div class="container mt-2">
+    <div class="row g-4 justify-content-center">
+        <div class="col-12 col-md-5">
+            <a asp-controller="Gurbani" asp-action="Read" class="card-link">
+                <div class="card app-card text-center p-4">
+                    <div class="card-icon mb-3">📖</div>
+                    <h4 class="text-gold">Guru Granth Sahib</h4>
+                    <p class="text-muted small">Read ang by ang — 1 to 1430</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-5">
+            <a asp-controller="Hukamnama" asp-action="Index" class="card-link">
+                <div class="card app-card text-center p-4">
+                    <div class="card-icon mb-3">🌅</div>
+                    <h4 class="text-gold">Daily Hukamnama</h4>
+                    <p class="text-muted small">Today's divine command from Sri Darbar Sahib</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

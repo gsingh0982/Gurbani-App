@@ -1,0 +1,25 @@
+@model Gurbani.Models.AllBanisViewModel
+@{
+    ViewData["Title"] = "All Banis";
+}
+
+<div class="hero-banner text-center py-4 px-3">
+    <h2 class="text-gold fw-bold">All Banis</h2>
+    <p class="mb-0">Complete collection of Sikh prayers and compositions</p>
+</div>
+
+<div class="container mt-4 px-3">
+    <div class="row g-3">
+        @foreach (var bani in Model.Banis)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <a asp-controller="AllBanis" asp-action="Read" asp-route-id="@bani.Id" class="card-link">
+                    <div class="card app-card p-3 text-center">
+                        <p class="gurmukhi-text mb-1" style="font-size:1.1rem;">@bani.Unicode</p>
+                        <p class="text-gold fw-semibold mb-0" style="font-size:0.9rem;">@bani.English</p>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,39 @@
+@model Gurbani.Models.BaniViewModel
+@{
+    ViewData["Title"] = Model?.Name ?? "Bani";
+}
+
+<div class="container mt-3 px-3">
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    @if (Model != null)
+    {
+        <div class="ang-header text-center mb-4">
+            <p class="gurmukhi-text mb-1">@Model.GurmukhinName</p>
+            <span class="badge bg-gold fs-6">@Model.Name</span>
+        </div>
+
+        @foreach (var verse in Model.Verses)
+        {
+            <div class="verse-card mb-4">
+                <p class="gurmukhi-text">@verse.Gurmukhi</p>
+                @if (!string.IsNullOrEmpty(verse.Transliteration))
+                {
+                    <p class="transliteration">@verse.Transliteration</p>
+                }
+                @if (!string.IsNullOrEmpty(verse.Translation))
+                {
+                    <p class="translation">@verse.Translation</p>
+                }
+            </div>
+        }
+
+        <div class="text-center mt-4 mb-2">
+            <a asp-controller="Bani" asp-action="Index" class="btn btn-outline-gold">&#8592; Back to Panj Baani</a>
+        </div>
+    }
+</div>

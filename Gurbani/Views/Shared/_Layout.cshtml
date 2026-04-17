@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Gurbani</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gurmukhi:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-gurbani sticky-top">
+        <div class="container-fluid px-3">
+            <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">
+                ੴ Gurbani
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Gurbani" asp-action="Read">Guru Granth Sahib</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Hukamnama" asp-action="Index">Hukamnama</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Bani" asp-action="Index">Panj Baani</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="AllBanis" asp-action="Index">All Banis</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pb-4">
+        @RenderBody()
+    </main>
+
+    <footer class="bg-gurbani text-center py-3 mt-4">
+        <small class="text-gold">ਵਾਹਿਗੁਰੂ &mdash; Sri Guru Granth Sahib Ji</small>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,293 @@
+/* ============================================================
+   GURBANI APP — DESIGN SYSTEM
+   All visual changes are here. Restore site.backup.css to undo.
+   ============================================================ */
+
+:root {
+    --gold:        #c9a84c;
+    --gold-dark:   #a8872e;
+    --gold-deep:   #7a5f1a;
+    --gold-light:  #e8c96a;
+    --gold-pale:   #fdf6e3;
+    --gold-glow:   rgba(201, 168, 76, 0.18);
+    --white:       #ffffff;
+    --off-white:   #fafaf7;
+    --text-body:   #3a3020;
+    --text-muted:  #9a8866;
+    --shadow-sm:   0 2px 12px rgba(168, 135, 46, 0.12);
+    --shadow-md:   0 6px 28px rgba(168, 135, 46, 0.18);
+    --shadow-lg:   0 12px 48px rgba(168, 135, 46, 0.22);
+    --radius:      14px;
+    --radius-sm:   8px;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+    background-color: var(--off-white);
+    color: var(--text-body);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    font-size: 15px;
+}
+
+/* Subtle warm dot pattern on the background */
+body {
+    background-image: radial-gradient(circle, rgba(201,168,76,0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+}
+
+/* ── Navbar ───────────────────────────────────────────────── */
+.bg-gurbani {
+    background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 60%, var(--gold-light) 100%);
+    border-bottom: none;
+    box-shadow: 0 4px 20px rgba(168, 135, 46, 0.35);
+    padding: 0.25rem 0;
+}
+
+.navbar-brand {
+    color: var(--white) !important;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.88) !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.6rem 1rem !important;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: 0.3px;
+}
+.nav-link:hover {
+    color: var(--white) !important;
+    background: rgba(255,255,255,0.18);
+}
+
+/* ── Hero Banner ──────────────────────────────────────────── */
+.hero-banner {
+    background: linear-gradient(160deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
+    padding: 4rem 1.5rem 3.5rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Decorative watermark circle behind hero text */
+.hero-banner::before {
+    content: 'ੴ';
+    position: absolute;
+    font-family: 'Noto Serif Gurmukhi', serif;
+    font-size: 18rem;
+    color: rgba(255,255,255,0.06);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+}
+
+.hero-banner h1,
+.hero-banner h2 {
+    color: var(--white);
+    text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.hero-banner p {
+    color: rgba(255,255,255,0.85) !important;
+    font-size: 1rem;
+    position: relative;
+}
+
+/* ── App Cards (Home & Panj Baani selection) ──────────────── */
+.app-card {
+    background: var(--white);
+    border: 1.5px solid rgba(201,168,76,0.25);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sheen sweep on hover */
+.app-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
+    transition: left 0.45s ease;
+}
+.app-card:hover::before { left: 130%; }
+
+.app-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--gold);
+}
+
+.card-link { text-decoration: none; color: inherit; }
+.card-icon { font-size: 2.8rem; display: block; margin-bottom: 0.75rem; }
+.app-card h4 { color: var(--gold-dark); font-weight: 700; margin-bottom: 0.3rem; }
+.app-card p  { color: var(--text-muted); font-size: 0.88rem; margin: 0; }
+
+/* ── Verse Cards ──────────────────────────────────────────── */
+.verse-card {
+    background: var(--white);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 1.5rem 1.5rem 1.25rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.25rem;
+    position: relative;
+    transition: box-shadow 0.2s;
+}
+
+.verse-card:hover { box-shadow: var(--shadow-md); }
+
+/* Gold dot accent top-right */
+.verse-card::after {
+    content: '';
+    position: absolute;
+    top: 1rem; right: 1rem;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold-light);
+}
+
+/* ── Typography ───────────────────────────────────────────── */
+.gurmukhi-text {
+    font-family: 'Noto Serif Gurmukhi', serif;
+    font-size: 1.45rem;
+    line-height: 2.1;
+    color: var(--text-body);
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+}
+
+.transliteration {
+    font-size: 0.92rem;
+    color: var(--gold-dark);
+    margin-bottom: 0.3rem;
+    font-style: italic;
+    letter-spacing: 0.3px;
+    padding-left: 0.25rem;
+    border-left: 2px solid var(--gold-light);
+}
+
+.translation {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    line-height: 1.7;
+}
+
+/* ── Ang Header Badge ─────────────────────────────────────── */
+.ang-header { margin-bottom: 2rem; }
+.ang-header .badge {
+    padding: 0.6rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem !important;
+    letter-spacing: 1px;
+    box-shadow: 0 3px 12px rgba(201,168,76,0.3);
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: var(--white);
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 1.5rem;
+    box-shadow: 0 3px 10px rgba(168,135,46,0.3);
+    transition: transform 0.15s, box-shadow 0.15s;
+    letter-spacing: 0.3px;
+}
+.btn-gold:hover {
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 16px rgba(168,135,46,0.4);
+}
+
+.btn-outline-gold {
+    border: 2px solid var(--gold);
+    color: var(--gold-dark);
+    background: var(--white);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 1.4rem;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+}
+.btn-outline-gold:hover {
+    background: var(--gold);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(168,135,46,0.3);
+    transform: translateY(-1px);
+}
+
+/* ── Colors & Utilities ───────────────────────────────────── */
+.text-gold   { color: var(--gold) !important; }
+.text-muted  { color: var(--text-muted) !important; }
+.bg-gold     { background-color: var(--gold) !important; }
+.badge.bg-gold {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold)) !important;
+    color: var(--white);
+}
+
+/* ── Ang Input ────────────────────────────────────────────── */
+.ang-input {
+    background: var(--white);
+    border: 2px solid rgba(201,168,76,0.35);
+    color: var(--text-body);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 1rem;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.ang-input:focus {
+    background: var(--white);
+    color: var(--text-body);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-glow);
+    outline: none;
+}
+.ang-input::placeholder { color: var(--text-muted); opacity: 0.7; }
+
+/* ── Footer ───────────────────────────────────────────────── */
+footer.bg-gurbani {
+    background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%) !important;
+    border-top: none !important;
+    padding: 1.25rem 0;
+    box-shadow: 0 -4px 20px rgba(168,135,46,0.2);
+}
+footer .text-gold { color: rgba(255,255,255,0.92) !important; font-size: 0.9rem; letter-spacing: 0.5px; }
+
+/* ── Section divider line ─────────────────────────────────── */
+.container { animation: fadeUp 0.35s ease both; }
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Mobile ───────────────────────────────────────────────── */
+@media (max-width: 576px) {
+    .gurmukhi-text { font-size: 1.2rem; line-height: 2; }
+    .hero-banner   { padding: 2.5rem 1rem 2rem; }
+    .hero-banner::before { font-size: 10rem; }
+    .btn           { min-height: 44px; }
+    .nav-link      { min-height: 44px; display: flex; align-items: center; }
+    .verse-card    { padding: 1.1rem 1rem; }
+}
