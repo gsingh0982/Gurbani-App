@@ -5,12 +5,12 @@ using Gurbani.Models;
 namespace Gurbani.Services;
 
 // Handles all data fetching — checks DB first, calls API only if needed (cache-aside pattern)
-public class GurbaniService(HttpClient http, GurbaniDbContext db)
+public class GurbaniService(HttpClient http, GurbaniDbContext db, IConfiguration config)
 {
     // Ignores case differences between JSON keys and C# property names
     private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
 
-    private const string BaseUrl = "https://api.gurbaninow.com/v2";
+    private string BaseUrl => config["GurbaniApi:BaseUrl"] ?? "https://api.gurbaninow.com/v2";
 
     // Fetches a single ang of Guru Granth Sahib
     public async Task<AngViewModel?> GetAngAsync(int ang)
