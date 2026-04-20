@@ -61,15 +61,20 @@ public class GurbaniService(HttpClient http, GurbaniDbContext db, IConfiguration
 
         var pageNo = data.Pageno;
 
-        // Step 3: Save to DB — new date tomorrow = new API call
-        db.CachedHukamnamas.Add(new CachedHukamnama
+        // Step 3: Only cache if the API has actually updated to today's Hukamnama
+        var g = data.Date.Gregorian;
+        var apiDate = new DateOnly(g.Year, g.Monthno, g.Date);
+        if (apiDate == today)
         {
-            Date = today,
-            PageNo = pageNo,
-            JsonData = json,
-            CachedAt = DateTime.UtcNow
-        });
-        await db.SaveChangesAsync();
+            db.CachedHukamnamas.Add(new CachedHukamnama
+            {
+                Date = today,
+                PageNo = pageNo,
+                JsonData = json,
+                CachedAt = DateTime.UtcNow
+            });
+            await db.SaveChangesAsync();
+        }
 
         return MapHukamnamaViewModel(pageNo, data);
     }

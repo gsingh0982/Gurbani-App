@@ -96,6 +96,7 @@ public class GregorianDate
 {
     public string Day { get; set; } = "";
     public string Month { get; set; } = "";
+    public int Monthno { get; set; }
     public int Date { get; set; }
     public int Year { get; set; }
 }
